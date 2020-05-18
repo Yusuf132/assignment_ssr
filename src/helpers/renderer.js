@@ -18,13 +18,15 @@ export default (req, store) => {
 
   return `
     <html>
-      <head></head>
+      <head>
+        <link href="style.css" rel="stylesheet" />
+      </head>
       <body>
         <div id="root">${content}</div>
         <script>
           window.INITIAL_STATE = ${serialize(store.getState())}
         </script>
-        <script src="bundle.js"></script>
+        <script src="build/bundle.js"></script>
       </body>
     </html>
   `;

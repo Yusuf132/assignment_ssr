@@ -15,7 +15,7 @@ class NewsList extends Component {
 
   render() {
     return (
-      <div>
+      <div className='news-list'>
         Here's a big list of news:
         <ul>{this.renderNews()}</ul>
       </div>

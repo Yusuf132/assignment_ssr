@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from './components/Home';
-import NewsList, { loadData } from './components/newsList/NewsList';
+import NewsList, { loadData } from './components/newsList/newsList.component';
 
 export default [
   {

@@ -1,0 +1,15 @@
+.news-list{
+    font-size: 56px;
+}
+.header-container{
+    height: 20px;
+    width: 100%;
+    display: flex;
+    margin-bottom: 25px;
+    background-color: #ff6600;
+}
+.header-container > div{
+    padding: 0px 25px;
+    color: white;
+    width : 10px;
+}
