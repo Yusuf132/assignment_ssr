@@ -5,8 +5,7 @@ import NewsList, { loadData } from './components/newsList/newsList.component';
 export default [
   {
     path: '/',
-    component: Home,
-    exact: true
+    component: Home
   },
   {
     loadData,

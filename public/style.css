@@ -1,11 +1,22 @@
-.news-list{
-}
+
 .header-container{
     height: 20px;
     width: 100%;
     display: flex;
     margin-bottom: 25px;
     background-color: #ff6600;
+}
+.pagination-container{
+    height: 20px;
+    width: 100%;
+    display: flex;
+    margin-bottom: 25px;
+    background-color: #ff6600;
+    justify-content: left;
+}
+.pagination-container > div{
+    padding: 0px 25px;
+    color: white;
 }
 .header-container > div{
     padding: 0px 25px;
@@ -18,13 +29,14 @@
     font-family: Verdana, Geneva, sans-serif;
     font-size: 10pt;
     color: #828282;
+    border-top: 1px solid #dee2e6
 }
 
 .feed-comments-votes{
     padding-right: 35px;
     width: 8%; 
+    color:black;
 }
-
 .feed-details{
     width: 100%;
 }
@@ -61,5 +73,16 @@
 }
 
 .feed-hide{
+    cursor: pointer;
+}
+
+.news-list div:nth-of-type(odd) {
+    background-color: rgba(0,0,0,.05);
+}
+
+.left{
+    cursor: pointer;
+}
+.next{
     cursor: pointer;
 }

@@ -12,6 +12,12 @@ const app = express();
 
 app.use(express.static('public'));
 
+app.use(function(req,res,next){
+    res.setHeader('Access-Control-Allow-Origin', 'http://hn.algolia.com');
+    res.setHeader('Access-Control-Allow-Origin', 'https://hn.algolia.com');
+    next();
+})
+
 app.get('*', (req, res) => {
     const store = createStore();
     const promises = matchRoutes(Routes, req.path).map(({ route }) => {

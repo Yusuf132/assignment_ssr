@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchNews } from '../../actions';
+import { fetchNews, changePage } from '../../actions';
 import Feed from '../feed/feed.component';
+import {withRouter} from 'react-router';
 
 class NewsList extends Component {
   componentDidMount() {
-    this.props.fetchNews();
+    let pageString = this.props.location.search;
+    const pageCount = parseInt(pageString.split('=')[1]);
+    this.props.updatePage({pageNum:pageCount});
+    this.props.fetchNews(pageCount);
   }
 
   renderNews() {
@@ -13,7 +17,9 @@ class NewsList extends Component {
       return <li key={news.objectID}>{news.author}</li>;
     });
   }
-
+  componentDidUpdate() {
+    
+  }
   render() {
     return (
       <div className='news-list'>
@@ -27,13 +33,18 @@ class NewsList extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { news: state.news.newsList };
-}
+const mapStateToProps= (state) => ({
+  news: state.news.newsList,
+  page: state.news.paginationConfig.page
+})
 
 function loadData(store) {
     return store.dispatch(fetchNews());
-  }
+}
   
 export { loadData };
-export default connect(mapStateToProps, { fetchNews })(NewsList);
+const mapDispatchToProps = dispatch => ({
+  fetchNews:(page) => dispatch(fetchNews(page)),
+  updatePage:(page)=>dispatch(changePage(page))
+})
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewsList));

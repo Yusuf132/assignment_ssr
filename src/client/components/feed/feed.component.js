@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { hideFeed } from '../../actions';
-
-const Feed = ({news, hide}) => {
+import { hideFeed, fetchNews, addVote } from '../../actions';
+const Feed = ({news, hide, fetch, add, page}) => {
     const {num_comments, votes, title, url, author, created_at} = news;
     const getHours = (date) => {
         return new Date(date).getHours();
@@ -10,8 +9,10 @@ const Feed = ({news, hide}) => {
     return (
         <div className='feed-container'>
             <div className='feed-comments-votes'>{num_comments}</div>
-            <div className='feed-comments-votes'></div>
-            <div className='feed-comments-votes votearrow'></div>
+            <div className='feed-comments-votes count'>{votes}</div>
+            <div className='feed-comments-votes votearrow'
+                onClick= {()=> {add(news); fetch(page)}}
+            ></div>
             <div className="feed-details">
                 <span className='feed-title'>
                     {title}
@@ -33,7 +34,7 @@ const Feed = ({news, hide}) => {
                     {getHours(created_at)}<span>hours ago</span>
                 </span>
                 <span className='feed-hide'>
-                    [<span onClick = {()=> {hide(news)}}> hide </span>]
+                    [<span onClick = {()=> {hide(news); fetch(page)}}> hide </span>]
                 </span>
             </div>
         </div>
@@ -41,8 +42,12 @@ const Feed = ({news, hide}) => {
 }
 
 const mapDispatchProps = dispatch =>({
-    hide:(news)=> dispatch(hideFeed(news))
+    hide:(news)=> dispatch(hideFeed(news)),
+    fetch: (page) => dispatch(fetchNews(page)),
+    add: (news) => dispatch(addVote(news))
 })
+const mapStateToProps= (state) => ({
+    page: state.news.paginationConfig.page
+  })
 
-
-export default connect(null, mapDispatchProps)(Feed);
+export default connect(mapStateToProps, mapDispatchProps)(Feed);
