@@ -59,3 +59,7 @@
 .feed-author,.feed-created{
     padding-right:10px;
 }
+
+.feed-hide{
+    cursor: pointer;
+}

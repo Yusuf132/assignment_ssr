@@ -19,7 +19,7 @@ class NewsList extends Component {
       <div className='news-list'>
       {
         this.props.news.map((news) => (
-           <Feed key={news.objectID} news={news}></Feed>
+           news.hide? null : <Feed key={news.objectID} news={news}></Feed>
         ))
       }
       </div>
@@ -28,7 +28,7 @@ class NewsList extends Component {
 }
 
 function mapStateToProps(state) {
-  return { news: state.news };
+  return { news: state.news.newsList };
 }
 
 function loadData(store) {

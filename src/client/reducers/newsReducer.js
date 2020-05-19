@@ -1,10 +1,24 @@
 
-import {FETCH_NEWS} from '../actions';
+import {FETCH_NEWS, HIDE_FEED} from '../actions';
+import {hideFeed} from './newsFeed.utils';
 
-export default (state = [], action) => {
+const INITIAL_STATE = {
+  newsList: [],
+  updateList: []
+}
+
+export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
       case FETCH_NEWS:
-        return action.payload.data.hits;
+        return {
+          ...state,
+          newsList: action.payload.data.hits
+        };
+      case HIDE_FEED:
+      return {
+        ...state,
+        newsList: hideFeed(state.newsList, action.payload)
+      }  
       default:
         return state;
     }

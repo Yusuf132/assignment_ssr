@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { hideFeed } from '../../actions';
 
-const Feed = (props) => {
-    console.log(props);
-    const {num_comments, votes, title, url, author, created_at} = props.news;
+const Feed = ({news, hide}) => {
+    const {num_comments, votes, title, url, author, created_at} = news;
     const getHours = (date) => {
         return new Date(date).getHours();
     }
@@ -31,12 +32,17 @@ const Feed = (props) => {
                 <span className='feed-created'>
                     {getHours(created_at)}<span>hours ago</span>
                 </span>
-                <span>
-                    [<span> hide </span>]
+                <span className='feed-hide'>
+                    [<span onClick = {()=> {hide(news)}}> hide </span>]
                 </span>
             </div>
         </div>
     )
 }
 
-export default Feed;
+const mapDispatchProps = dispatch =>({
+    hide:(news)=> dispatch(hideFeed(news))
+})
+
+
+export default connect(null, mapDispatchProps)(Feed);
