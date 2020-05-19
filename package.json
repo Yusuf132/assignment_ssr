@@ -3,11 +3,17 @@
   "version": "1.0.0",
   "description": "Server side rendering project sapient assignment",
   "main": "index.js",
+  "engines": {
+    "node": "v12.14.1",
+    "npm": "6.13.6"
+  },
   "scripts": {
     "dev": "npm-run-all --parallel dev:*",
     "dev:server": "nodemon --watch build --exec \"node build/bundle.js\"",
     "dev:build-server": "webpack --config webpack.server.js --watch",
-    "dev:build-client": "webpack --config webpack.client.js --watch"
+    "dev:build-client": "webpack --config webpack.client.js --watch",
+    "start": "node build/bundle.js",
+    "heroku-postbuild": "--only=dev --no-shrinkwrap"
   },
   "author": "yusufkha132@gmail.com",
   "license": "ISC",
