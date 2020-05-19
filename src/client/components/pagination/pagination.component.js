@@ -10,7 +10,7 @@ const Pagination = ({history, page, changePage, fetchNews}) => {
         history.push(url);
     }
     const right = () => {
-        let pageNumber = (page>0? page+1: 0);
+        let pageNumber = (page>-1? page+1: 1);
         let url = '/search?page=' + pageNumber;
         fetchNews(pageNumber);
         history.push(url);
