@@ -1,14 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router';
-const Pagination = ({history}) => {
+import { fetchNews, changePage } from '../../actions';
+const Pagination = ({history, page, changePage, fetchNews}) => {
     const left = () => {
-        console.log('left');
-        history.push('/search?page=2');
+        let pageNumber = (page>0? page-1: 0);
+        let url = '/search?page=' + pageNumber;
+        fetchNews(pageNumber);
+        history.push(url);
     }
     const right = () => {
-            console.log('right');
-            history.push('/search?page=3')
+        let pageNumber = (page>0? page+1: 0);
+        let url = '/search?page=' + pageNumber;
+        fetchNews(pageNumber);
+        history.push(url);
     }
     return (
         <div>
@@ -30,5 +35,11 @@ const Pagination = ({history}) => {
     )
 }
 
-
-export default withRouter(connect(null)(Pagination));
+const mapDispatchToProps = dispatch => ({
+    fetchNews:(page) => dispatch(fetchNews(page)),
+    updatePage:(page)=>dispatch(changePage(page))
+  })
+const mapStateToProps= (state) => ({
+    page: state.news.paginationConfig.page
+  })
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Pagination));
