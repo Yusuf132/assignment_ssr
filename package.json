@@ -9,11 +9,10 @@
   },
   "scripts": {
     "dev": "npm-run-all --parallel dev:*",
-    "dev:server": "nodemon --watch build --exec \"node build/bundle.js\"",
+    "start": "npm-run-all dev:build-server dev:build-client dev:server",
     "dev:build-server": "webpack --config webpack.server.js --watch",
     "dev:build-client": "webpack --config webpack.client.js --watch",
-    "start": "node build/bundle.js",
-    "build": "concurrently --kill-others-on-fail \"npm run dev:build-server\" \"npm run dev:build-client\""
+    "dev:server": "nodemon --watch build --exec \"node build/bundle.js\""
   },
   "author": "yusufkha132@gmail.com",
   "license": "ISC",
