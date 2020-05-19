@@ -9,7 +9,6 @@ const Home = () => {
         <div>
             <Header/>
             <NewsList/>
-            <h1>Home Component</h1>
         </div>
     )
 }

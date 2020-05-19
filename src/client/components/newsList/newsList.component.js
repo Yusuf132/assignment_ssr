@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchNews } from '../../actions';
+import Feed from '../feed/feed.component';
 
 class NewsList extends Component {
   componentDidMount() {
@@ -16,8 +17,11 @@ class NewsList extends Component {
   render() {
     return (
       <div className='news-list'>
-        Here's a big list of news:
-        <ul>{this.renderNews()}</ul>
+      {
+        this.props.news.map((news) => (
+           <Feed key={news.objectID} news={news}></Feed>
+        ))
+      }
       </div>
     );
   }

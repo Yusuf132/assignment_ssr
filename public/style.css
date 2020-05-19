@@ -1,5 +1,4 @@
 .news-list{
-    font-size: 56px;
 }
 .header-container{
     height: 20px;
@@ -11,5 +10,52 @@
 .header-container > div{
     padding: 0px 25px;
     color: white;
-    width : 10px;
+}
+.feed-container{
+    width: 100%;
+    display: flex;
+    margin-bottom: 5px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10pt;
+    color: #828282;
+}
+
+.feed-comments-votes{
+    padding-right: 35px;
+    width: 8%; 
+}
+
+.feed-details{
+    width: 100%;
+}
+
+.votearrow{
+    cursor: pointer;
+    width:      10px;
+    height:     10px;
+    border:     0px;
+    margin:     3px 2px 6px;
+    background: url("https://news.ycombinator.com/grayarrow.gif")
+    no-repeat
+}
+
+.feed-title{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 10pt;
+    color:black;
+    padding-right: 10px
+}
+
+.comhead{
+    font-size: 8pt;
+    padding-right: 10px
+}
+
+.comhead a:link{
+    color: #828282;
+    text-decoration: none;
+}
+
+.feed-author,.feed-created{
+    padding-right:10px;
 }
