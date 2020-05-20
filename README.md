@@ -24,3 +24,13 @@ monitor the changes and update the server<br>
 ### SEO INTEGRATION
 
 Integrated with the help of React-helmet
+
+### App Persistence
+
+Integrated with the help of Redux-persist <br>
+with the help of localStorage
+
+### Line Chart
+
+Integrated with the help of react-linechart <br>
+Updates the chart on changes.
