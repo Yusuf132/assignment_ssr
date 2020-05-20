@@ -13,7 +13,7 @@ const port = process.env.PORT || 5000;
 app.use(express.static('public'));
 
 app.use(function(req,res,next){
-    res.setHeader('Access-Control-Allow-Origin', 'http://hn.algolia.com');
+    res.setHeader('Access-Control-Allow-Origin', 'https://hn.algolia.com');
     res.setHeader('Access-Control-Allow-Origin', 'https://hn.algolia.com');
     next();
 })

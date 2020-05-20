@@ -13,7 +13,7 @@ export const UPDATE_PAGE_LOAD = "UPDATE_PAGE_LOAD";
 
 export const fetchNews = (page) => async dispatch => {
     page = page? page: 0;
-    const url = 'http://hn.algolia.com/api/v1/search?page=' + page;
+    const url = 'https://hn.algolia.com/api/v1/search?page=' + page;
     const res = await axios.get(url);
    // console.log(res)
 
